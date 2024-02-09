@@ -1,40 +1,213 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>ELabs IOT Classes Slides</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/solarized.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1 class="r-fit-text">🚀ELabs IOT Crash Course🚀</h1>
+				<h6>🗓️11th Feb 2024</h6>
+				<img src="dist/assets/KIIT_logo.png" alt="KIIT university logo" width="30%">
+				&nbsp; &nbsp;
+				&nbsp; &nbsp;
+				<img src="dist/assets/ELabs.png" alt="Elabs logo" width="20%">
+			</section>
+			<section data-transition="fade">
+				<section>
+					<h2>Do you even C bro?🤓</h2>
+					<p class="fragment">Regular C programming and Arduino's code may seem different but in essence...
+					</p>
+					<p class="fragment" style="color: rgba(242, 163, 58, 0.7);">(They really aren't!)</p>
+				</section>
+
+				<section>
+					<h3>In general, it could be broken down to 3 steps</h3>
+					<ol>
+						<li class="fragment">Input⌨️</li>
+						<li class="fragment">Process⚙️</li>
+						<li class="fragment">Output📺️</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Or under the terms of embedded systems/IOT/Arduino</h3>
+					<ol>
+						<li class="fragment">Sensing🌡️</li>
+						<li class="fragment">Decision Making⚙️</li>
+						<li class="fragment">Actuators🦾</li>
+					</ol>
+				</section>
+			</section>
+			<section data-background-color="aquamarine">
+				<section>
+					<h3>Let's have a side by side comparison....</h3>
+				</section>
+				<section>
+					<h3>1. Input ↔️ Sensing</h3>
+					<div class="fragment">
+						<h4>In Regular C</h4>
+						<pre>
+							<code data-trim data-trim class="language-c"> 
+								// Read from stdio and put data to myVar
+								scanf("%d", &myVar); 
+								// Read formatted data from file
+								fscanf(filePtr, "%c %c", &myBuf);
+							</code>
+						</pre>
+					</div>
+					<div class="fragment">
+						<h4>In Arduino</h4>
+						<pre>
+							<code data-trim class="language-c">
+								// Read digital value (0 or 1) from given pin
+								bool pinStatus = digitalRead(inputPin);
+								// Read analog value from given pin
+								// 10 bit value (0 to 1023) for arduino UNO
+								int analogRange = analogRead(analogInputPin);
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<h5>2. Decision making or processing part is more or less the same!</h5>
+					<div class="fragment">
+						<h4>In Regular C</h4>
+						<pre>
+							<code data-trim data-trim class="language-c"> 
+								int marks;
+								scanf("%d", &marks);
+								if(marks > 40){
+									printf("Pass!\n");
+								}
+								else{
+									printf("Fail!\n");
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="fragment">
+						<h4>In Arduino</h4>
+						<pre>
+							<code data-trim class="language-c">
+								int tempSensorVal = analogRead(analogInputPin);
+								if (tempSensorVal > 512){
+									// Hot! do something here
+								}
+								else{
+									// Normal do something here
+								}
+
+							</code>
+						</pre>
+					</div>
+
+				</section>
+				<section>
+					<h5>3. Output ↔️ Actuators</h5>
+					<div class="fragment">
+						<h4>In Regular C</h4>
+						<pre>
+							<code data-trim data-trim class="language-c"> 
+								// output to stdio
+								printf("your have passed!\n");
+								printf("your have failed \n");
+								// output to a file
+								fprintf(filePtr, "%s\n", "some text");
+							</code>
+						</pre>
+					</div>
+					<div class="fragment">
+						<h4>In Arduino</h4>
+						<pre>
+							<code data-trim class="language-c">
+								// set some pin's value to high/on/1/true
+								digitalWrite(outputPin, 1);
+								// set some pin's value to low/off/0/false
+								digitalWrite(outputPin, 0);
+								// generate a analog signal on some pin
+								// depends upon PWM resolution supported
+								// for example 0 to 255
+								// this isn't actually an analog voltage though
+								// PWM "simulates" analog voltages
+								analogWrite(outputPin, 128);
+							</code>
+						</pre>
+					</div>
+
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Wait!</h2>
+					<h3>One more thing...</h3>
+					<h3 class="fragment">🚧structure🚧</h3>
+				</section>
+
+				<section>
+					<h2>In Regular C</h2>
+					<pre>
+						<code data-trim class="language-c">
+							// import some libraries on top
+
+							// some global variables declaration
+							int main(){
+								//main code goes here
+								//gets executed sequential
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>In Arduino</h2>
+					<pre>
+						<code data-trim class="language-c">
+							// import some libraries on top
+							// some global variables declaration
+
+							void setup(){
+								// code here gets executed once
+								// IO declaration also goes here
+							}
+							void loop(){
+								/*after code in setup() gets executed
+								code here would get executed again and 
+								again until the device is switched off */
+							}
+						</code>
+					</pre>
+				</section>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
