@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>ELabs IOT Classes Slides</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/moon.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-color="#2088A1">
+				<h1 class="r-fit-text">Micropython🐍 + Raspberry pi🥧 pico</h1>
+				<h6>🗓️10th March 2024</h6>
+				<img src="dist/assets/KIIT_logo.png" alt="KIIT university logo" width="30%">
+				&nbsp; &nbsp;
+				&nbsp; &nbsp;
+				<img src="dist/assets/ELabs.png" alt="Elabs logo" width="20%">
+			</section>
+			<section>
+				<h3>A brief primer to embedded systems</h3>
+				<br><br>
+				<ol>
+					<li class="fragment">Sensing🌡️ ↝ get some data from environment</li>
+					<li class="fragment">Decision Making⚙️ ↝ decide upon that data</li>
+					<li class="fragment">Actuating 🦾 ↝ cause some effect to the environment</li>
+				</ol>
+			</section>
+			<section>
+				<h2>What's micropython?</h2>
+				<img class="r-stretch" src="dist/assets/micropython_logo.jpg" alt="">
+				<br>
+				MicroPython is a lean and efficient implementation of the Python 3 programming language that includes a
+				small subset of the Python standard library and is optimised to run on microcontrollers and in
+				constrained environments. <sup><a href="https://micropython.org/">🔗</a></sup>
+			</section>
+			<section>
+				<h3>😃Why someone might use micropython?😃</h3>
+				<ul class="fragment">
+					<li>Familiarity and ease of use: Python's simple syntax, readability, and extensive libraries make
+						it an excellent choice for beginners and experienced developers alike.</li>
+					<li>Rapid prototyping: With its small footprint and quick compile times, Micropython allows for
+						faster iteration and testing of ideas.</li>
+					<li>An active community contributes to the development and expansion of libraries, making it easier
+						to find solutions for various applications.</li>
+				</ul>
+			</section>
+			<section>
+				<h3>😟Why someone might <strong>NOT</strong>! use micropython?😟</h3>
+				<ul class="r-fit-text fragment">
+					<li>
+						Performance Limitations: Compared to lower-level languages like C or C++, MicroPython can have
+						performance overhead due to its interpreted nature, making it less suitable for
+						performance-critical applications.
+					</li>
+					<li>
+						Resource Constraints: MicroPython's runtime and libraries may consume more memory and storage
+						space compared to bare-metal programming, which could be a concern for resource-constrained
+						devices.
+					</li>
+					<li>
+						Some hardware platforms may have limited or incomplete support for MicroPython, leading to
+						compatibility issues or reduced functionality compared to native SDKs or frameworks.
+					</li>
+					<li>
+						Limited Libraries: While MicroPython has a growing ecosystem, it may lack certain libraries or
+						features available in other languages, requiring developers to implement functionality from
+						scratch or port existing libraries.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Raspberry Pi Pico🤔</h2>
+				<img class="r-stretch" src="dist/assets/pico_board.png" alt="raspberry pi pico development board">
+				<p class="r-fit-text">
+					The <a href="https://www.raspberrypi.com/products/raspberry-pi-pico/">Raspberry pi pico
+						<sup>🔗</sup></a> is a
+					microcontroller development board released by the raspberry pi foundation unlike
+					previous raspberry pi this board isn't a full blown linux capable computer per se but intended
+					towards
+					embedded systems, IoT etc.
+				</p>
+				<ul>
+					<li>At its core it has a RP2040 microcontroller.</li>
+					<li>pico boasts an open source software stack as well hardware.</li>
+					<li>It is reasonably affordable.</li>
+				</ul>
+			</section>
+			<section>
+				<h2>RP2040: The ⭐️star⭐️ of the show</h2>
+				<img class="r-stretch" src="dist/assets/rp2040.png" alt="RP2040 bare image">
+				<ul class="r-fit-text">
+					<li>Dual-core ARM Cortex-M0+: Provides multitasking capabilities and efficient processing.</li>
+					<li>133MHz Clock Speed: Offers high-speed operation for various applications.</li>
+					<li>264KB SRAM: Supports ample data storage during execution.</li>
+					<li>Programmable IO (PIO): Enables flexible and precise GPIO control.</li>
+					<li>Rich Peripheral Interfaces: Includes SPI, I2C, UART, PWM, and ADC for versatile
+						connectivity.</li>
+					<li>Awesome documentation.</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Let's have some python</h2>
+				<img class="r-stretch" src="dist/assets/mpfa.jpeg" alt="pepe the frog in snake form">
+			</section>
+			<section>
+				<h4>Now behold...</h4>
+				<h3>Let's have some <strong>micropython🐍🔥</strong></h3>
+				<p>We will be using a free online simulator for raspberry pi pico and micropython, <a
+						href="https://wokwi.com">wokwi.com</a></p>
+				<p>Visit <a
+						href="https://wokwi.com/projects/new/micropython-pi-pico">https://wokwi.com/projects/new/micropython-pi-pico</a>
+					to get started.</p>
+				<p>Documentation for wokwi <a href="https://docs.wokwi.com/">here</a>.</p>
+			</section>
+			<section>
+				<h2>Example 1</h2>
+				<h3>binary counter leds something</h3>
+				<ol class="fragment r-fit-text">
+					<li>4 leds representing 4 places of a binary number</li>
+					<li>a button to trigger an increment</li>
+					<li>each button press increases the counter by 1 and the leds represent the number in binary form
+					</li>
+					<li>upon reaching the max value of 4 digit binary number (16), reset counter</li>
+				</ol>
+				<p class="fragment">My implementation <a href="https://wokwi.com/projects/391927141309820929">here</a>.
+				</p>
+			</section>
+			<section>
+				<h2>Example 3</h2>
+				<h3>Installing an external library for 1602 I2C LCD</h3>
+				<ol class="fragment r-fit-text">
+					<li>Install a library in micropython to handle I2C LCDs</li>
+					<li><a
+							href="https://github.com/T-622/RPI-PICO-I2C-LCD">https://github.com/T-622/RPI-PICO-I2C-LCD</a>
+					</li>
+					<li>And play around!</li>
+				</ol>
+				<p class="fragment">My implementation <a href="https://wokwi.com/projects/391928281006070785">here</a>.
+				</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
