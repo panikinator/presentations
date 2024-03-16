@@ -1,0 +1,194 @@
+---
+title: IoT & Embedded Systems
+author: saksham
+title-slide-attributes:
+  data-background-image: assets/cover.png
+  data-background-opacity: "0.5"
+
+include-in-header:
+  - text: |
+      <style>
+      .reveal .slide-logo {
+        max-height: unset;
+        height: 60px;
+      }
+      </style>
+logo: assets/merged.png 
+date: "2024-03-17"
+format:
+  revealjs:
+    theme: blood
+    slide-number: true
+    transition: slide
+    background-transition: fade
+    # scrollable: true
+    embed-resources: true
+editor: 
+  render-on-save: true
+
+---
+
+
+# A ~~quick~~ recap {background-image="assets/confused_cat.webp" background-opacity="0.5"}
+
+
+## What is even going on?🤷‍♀️
+- embedded systems?
+- IoT?
+- are they different?
+- Arduino? development board?
+- coding? 
+- sensors? actuators? protocols?
+- microcontrollers, microprocessors?💻️
+
+#### and on and on🥱😵‍💫....
+
+## Don't worry
+
+. . .
+
+### We will explore everything! 
+
+
+One thing at a time...
+
+<!-- :::: {.columns}
+
+:::{.column width="50%"}
+![Arduino Logo](assets/Arduino_Logo.png){width="250"}
+![stm32 dev board](assets/stm32_bluepill.webp){width="250"}
+:::
+
+:::{.column width="50%"}
+![ESP32 dev board](assets/esp32_board.webp){width="250"}
+![AVR series microcontrollers](assets/AVR_group.jpg){width="250"}
+:::
+
+:::: -->
+
+## Embedded Systems
+
+Embedded systems are specialized computing systems designed to perform specific functions within a larger system.
+
+::::{.columns}
+
+:::{.column width="50%"}
+#### Features:
+
+- Simpler computers
+- Dedicated functionality
+- Resource-constrained (limited memory, processing power)
+
+:::
+
+:::{.column width="50%"}
+#### Examples:
+
+- clock timing system
+- Automotives control system
+- AC thermoregulation
+- etc.
+
+:::
+
+::::
+
+## IoT (Internet of Things)
+
+The IoT refers to the network of interconnected devices embedded with sensors, software, and other technologies, enabling them to collect and exchange data over the internet. Example: Smart bulb, weather stations etc
+
+
+
+
+::::{.columns}
+
+:::{.column width="40%"}
+#### Key Elements
+- Sensors, processing and actuators
+- Connectivity (Wi-Fi, Bluetooth, LoRa etc.)
+- Data processing and analytics
+
+:::
+
+:::{.column width="60%"}
+![](assets/iot_blynk_crop.gif){width="500" fig-align="right"}
+:::
+::::
+
+
+## Differences between Embedded Systems and IoT
+
+--
+
+::::{.columns}
+
+:::{.column width="50%"}
+### Embedded Systems:
+- Typically standalone devices
+- Limited connectivity (if any)
+- Focus on specific, predetermined tasks
+:::
+
+:::{.column width="50%"}
+### IoT:
+- Interconnected network of devices
+- Extensive connectivity for data exchange
+- Supports remote monitoring and control
+:::
+::::
+
+## Sensors
+Devices that detect and measure physical properties (temperature, light, motion, etc.).
+
+![](assets/sensors.webp){.nostretch fig-align="center" width="512"}
+
+## Actuators
+Components that perform physical actions based on received instructions (motors,relays, leds etc.).
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+![](assets/relay_arduino.png){width="230" fig-align="center"}
+
+![](assets/neopixel_arduino.png){height="200" fig-align="center"}
+:::
+
+:::{.column width="50%"}
+![](assets/servo.jpg){width="256" fig-align="center"}
+![](assets/stepper_motor_driver.png){width="256" fig-align="center"}
+:::
+::::
+ 
+
+## Arduino{background-image="assets/Arduino_Logo.png" background-opacity="0.5"}
+Arduino is an open-source electronics platform based on easy-to-use hardware and software.
+
+
+::::{.columns}
+
+:::{.column width="60%"}
+### Components:
+- Development boards (Arduino Uno, Arduino Mega, etc.)
+- Integrated development environment (IDE)
+- Vast community support and resources
+:::
+
+:::{.column width="40%"}
+### Applications:
+- Prototyping
+- DIY projects
+- Educational purposes
+:::
+::::
+
+## Development Boards
+Development boards serve as the foundation for creating embedded systems and IoT devices. They provide other necessary componenets required to make the development with that particular microcontroller easier.
+
+### In general they have
+- Microcontroller (e.g., ATmega328P in Arduino Uno or esp32, rp2040 etc)
+- Input/output pins
+- Power supply interface
+- (optional) ICP/IAP chips (USB to UART in Arduino Uno)
+
+
